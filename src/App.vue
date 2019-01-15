@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+      <nav-bar/>
+      <router-view name="login"> </router-view>
+      <router-view name="homepage"> </router-view>
+      <router-view name="sellerView"></router-view>
+      <router-view name="adminView"></router-view>
+      <router-view name="accessDenied"></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import Login from './components/Login'
+import NavBar from './components/NavBar.vue'
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+      Login,
+      NavBar
+  },
+  data:function(){
+      return{
+          route:this.$router.history.current.name
+      }
+  },
+  methods:{
+        logOut(){
+           this.$store.commit('LOGOUT_USER')
+           this.$router.push('Login')  
+        }
+    }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+   font-family: 'Lato', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  box-sizing: border-box;
 }
+
 </style>
