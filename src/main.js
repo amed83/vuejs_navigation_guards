@@ -54,10 +54,17 @@ const router = new VueRouter({routes: routes,mode:'history'  });
 router.beforeResolve((to,from,next)=>{
     const user= store.getters.userJustLogged
     if(!user && to.path =='/'){
+        store.dispatch('hideErrorMessage')
         next('login')
-    }else if(!user && to.path!=='/login'){
+    }
+    else if(!user && to.path!=='/login'){
+        store.dispatch('showErrorMessage')
         next('login')
-    }else if(user && to.path=='/login') {
+    }
+    else if(user && to.path=='/login') {
+        next()
+    }
+    else if(!user && to.path==='/login'){
         next()
     }
     else if((user==='seller' && to.path==='/AdminView') || (user==='admin' && to.path==='/SellerView')){

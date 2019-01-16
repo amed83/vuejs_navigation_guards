@@ -18,17 +18,6 @@ export default {
   components: {
       Login,
       NavBar
-  },
-  data:function(){
-      return{
-          route:this.$router.history.current.name
-      }
-  },
-  methods:{
-        logOut(){
-           this.$store.commit('LOGOUT_USER')
-           this.$router.push('Login')  
-        }
     }
 }
 </script>

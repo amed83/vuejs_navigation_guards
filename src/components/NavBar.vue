@@ -9,8 +9,8 @@
 export default {
     methods:{
         logOut(){
-           this.$store.commit('LOGOUT_USER')
-           this.$router.push('Login')  
+            this.$store.dispatch('logoutUser')
+            this.$router.push('login')  
         }
     }
 }

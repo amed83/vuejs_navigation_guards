@@ -11,11 +11,15 @@ export default new Vuex.Store({
             {username:'seller',password:'seller'},
             {username:'admin',password:'admin'}
         ],
-        loggedAs:''
+        loggedAs:'',
+        error:false,
     },
     getters:{
         userJustLogged:state=>{
             return state.loggedAs
+        },
+        getMaliciousAttempt:state=>{
+            return state.attemptMalicious
         }
     },
     mutations:{
@@ -30,11 +34,27 @@ export default new Vuex.Store({
         },
         LOGOUT_USER:(state)=>{
             state.loggedAs=''
+        },
+        SHOW_ERROR_MESSAGE:(state)=>{
+            state.error=true;
+        },
+        HIDE_ERROR_MESSAGE:(state)=>{
+            state.error=false;
         }
     },
     actions:{
         loginUser:(context,response)=>{
             context.commit('LOGIN_USER',response)
+        },
+        showErrorMessage:(context)=>{
+            context.commit('SHOW_ERROR_MESSAGE')
+        },
+        hideErrorMessage:(context)=>{
+            context.commit('HIDE_ERROR_MESSAGE')
+        },
+        logoutUser:(context,dispatch)=>{
+            context.commit('LOGOUT_USER')
+            context.dispatch('hideErrorMessage')
         }
     }
 })

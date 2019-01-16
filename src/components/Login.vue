@@ -5,6 +5,7 @@
             <input type="text" placeholder="enter your username" class="input_fields" v-model="user.username">
             <input type="password" placeholder="enter your password" class="input_fields"v-model="user.pswd">
             <button class="btn btn-primary" @click="login" >Login</button>
+            <p v-if="error">You have to log in before you can visit other pages!</p>
         </form>
     </div>
 </template>
@@ -25,11 +26,10 @@ export default {
         }
     },
     computed:{
-        ...mapState(['loggedAs']),
+        ...mapState(['loggedAs','error']),
         redirectIfLogged(){
-        
             if(this.loggedAs){
-                this.$router.push({name:'Homepage'})
+                this.$router.push('homepage')
             }
         }
     },

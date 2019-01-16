@@ -9,7 +9,7 @@
 export default {
     methods:{
         backToHome(){
-            this.$router.push('Homepage')
+            this.$router.push('homepage')
         }
     }
 }
