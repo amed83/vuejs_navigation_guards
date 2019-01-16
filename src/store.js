@@ -24,7 +24,8 @@ export default new Vuex.Store({
     },
     mutations:{
         LOGIN_USER:(state,payload)=>{
-            const user = payload.username
+            
+            const user = payload.username || payload
             let checkUser= state.usersDb.find(username=>{
                 return username.username===user
             })
@@ -40,7 +41,8 @@ export default new Vuex.Store({
         },
         HIDE_ERROR_MESSAGE:(state)=>{
             state.error=false;
-        }
+        },
+        
     },
     actions:{
         loginUser:(context,response)=>{
@@ -56,5 +58,6 @@ export default new Vuex.Store({
             context.commit('LOGOUT_USER')
             context.dispatch('hideErrorMessage')
         }
+        
     }
 })

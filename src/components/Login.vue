@@ -23,6 +23,7 @@ export default {
             e.preventDefault()
             const user = this.user
             this.$store.dispatch('loginUser',user)
+            this.$cookies.set('user',user)
         }
     },
     computed:{

@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import store from './store'
 import VueRouter from 'vue-router';
+import VueCookies from 'vue-cookies';
 import Homepage from './components/Homepage.vue'
+Vue.use(VueCookies);
 import Login from './components/Login.vue'
 import SellerView from './components/SellerView.vue'
 import AdminView from './components/AdminView.vue'

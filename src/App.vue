@@ -18,6 +18,16 @@ export default {
   components: {
       Login,
       NavBar
+  },
+    created(){
+        if(!this.$cookies.get('user')){
+            return
+        }
+        const usercookies = this.$cookies.get('user').username || null
+        
+        if(usercookies){
+            this.$store.dispatch('loginUser',usercookies)
+        }
     }
 }
 </script>

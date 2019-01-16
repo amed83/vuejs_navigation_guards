@@ -11,6 +11,7 @@ export default {
         logOut(){
             this.$store.dispatch('logoutUser')
             this.$router.push('login')  
+            this.$cookies.remove('user')
         }
     }
 }
