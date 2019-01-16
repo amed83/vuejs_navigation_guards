@@ -1,7 +1,7 @@
 <template lang="html">
     <div class="main_container">
         <h2>AUTH PROTOTYPE </h2>
-        <button class="btn btn-primary logout" @click="logOut">Logout</button>
+        <button class="btn btn-primary logout" @click="logOut" v-if="userLogged">Logout</button>
     </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
             this.$store.dispatch('logoutUser')
             this.$router.push('login')  
             this.$cookies.remove('user')
+        }
+    },
+    computed:{
+        userLogged(){
+            return this.$store.getters.userJustLogged
         }
     }
 }
